@@ -63,7 +63,7 @@ The architecture consists of convolution layers intermingled with max pooling to
 | Logits 	        | (N, 84)  	      | (N, 43)                 	| Classes: 43  	                                       |
 
 The model architecture is inspired by _LeNet_. Instead of the 5x5 filters, I decided to use 2 3x3 filters which will produce the same feature maps if the depth is held constant. However, I decided to increase the depth as we proceeded between convolution layers to detect more _features_.
-__
+___
 
 ## Training
 ### Initialization
