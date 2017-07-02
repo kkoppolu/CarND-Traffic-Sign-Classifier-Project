@@ -45,21 +45,22 @@ ___
 A convolution neural network is used for the classifying the traffic signs. Convolution takes advantage of the spatial relationship between pixel data of images.
 The architecture consists of convolution layers intermingled with max pooling to reduce feature size. These are followed by fully connected layers. The ReLU activation function is used for non-linearity except in the last layer outputting logits. The input to the activation function is batch normalized to reduce the variance in the activation input across mini-batches. Dropout is used between the fully connected layers to avoid over-fitting
 
-|Layer  	|Input   	|Output   	|Parameters
-|---	|---	|---	|---	|---	|
-| Input  	| -  	| (N, 32, 32, 3) RGB images 	|   	|   	|
-| Convolution  	| (N, 32, 32, 3)  	| (N, 30, 30, 6)  	| 3x3 filter with stride=1, padding=VALID and depth=6  	|
-| Convolution  	| (N, 30, 30, 6)  	| (N, 28, 28, 16)  	| 3x3 filter with stride=1, padding=VALID and depth=16  	|
-| Max Pool  	| (N, 28, 28, 16)  	| (N, 14, 14, 16)  	| 2x2 filter with stride=2  	|
-| Convolution 	| (N, 14, 14, 16)  	| (N, 12, 12, 24)  	| 3x3 filter with stride=1, padding=VALID and depth=24  	|
-| Convolution 	| (N, 12, 12, 24)  	| (N, 10, 10, 36)  	| 3x3 filter with stride=1 and depth=36  	|
-| Max Pool 	| (N, 10, 10, 36)  	| (N, 5, 5, 36)  	| 2x2 filter with stride=2  	|
-| Convolution 	| (N, 5, 5, 36)  	| (N, 3, 3, 48)  	| 3x3 filter with stride=1, padding=VALID and depth=48  	|
-| Fully Connected 	| (N, 432)  	| (N, 120)  	| Hidden features: 120  	|
-| Dropout 	| -  	| -  	| Probability: 0.5 |  	
-| Fully Connected 	| (N, 120)  	| (N, 84)  	| Hidden features: 84  	|
-| Dropout 	| -  	| -  	| Probability: 0.5 |  	
-| Logits 	| (N, 84)  	| (N, 43)  	| Classes: 43  	|
+
+| Layer  	        | Input           | Output                    | Parameters                                           |
+| -----	          | -----	          | ------                    | ----------                                           |
+| Input  	    	  | - 	            | (N, 32, 32, 3) RGB images |   	                                                 |
+| Convolution     | (N, 32, 32, 3)  | (N, 30, 30, 6) 	          | 3x3 filter with stride=1, padding=VALID and depth=6  |
+| Convolution     | (N, 30, 30, 6)  | (N, 28, 28, 16)           | 3x3 filter with stride=1, padding=VALID and depth=16 |
+| Max Pool  	    | (N, 28, 28, 16) | (N, 14, 14, 16)           | 2x2 filter with stride=2                             |
+| Convolution	    | (N, 14, 14, 16) | (N, 12, 12, 24)  	        | 3x3 filter with stride=1, padding=VALID and depth=24 |
+| Convolution     | (N, 12, 12, 24) | (N, 10, 10, 36)  	        | 3x3 filter with stride=1 and depth=36  	             |
+| Max Pool 	      | (N, 10, 10, 36) | (N, 5, 5, 36)  	          | 2x2 filter with stride=2  	                         |
+| Convolution    	| (N, 5, 5, 36)  	| (N, 3, 3, 48)  	          | 3x3 filter with stride=1, padding=VALID and depth=48 |
+| Fully Connected | (N, 432)  	    | (N, 120)  	              | Hidden features: 120  	                             |
+| Dropout 	      | -  	            | -  	                      | Probability: 0.5                                     |  	
+| Fully Connected | (N, 120)  	    | (N, 84)  	                | Hidden features: 84  	                               |
+| Dropout 	      | -  	            | -  	                      | Probability: 0.5                                     |  	
+| Logits 	        | (N, 84)  	      | (N, 43)                 	| Classes: 43  	                                       |
 
 The model architecture is inspired by _LeNet_. Instead of the 5x5 filters, I decided to use 2 3x3 filters which will produce the same feature maps if the depth is held constant. However, I decided to increase the depth as we proceeded between convolution layers to detect more _features_.
 __
@@ -143,7 +144,7 @@ The classification results from the model are:
 Let's analyze the performance for each image.
 
 _Speed Limit 30 km/h_:  
-This image is correctly classified by the model. From the [Precision/Recall chart](#Precision & Recall), we can see that this image class has a high precision/recall and hence a high F score.
+This image is correctly classified by the model. From the [Precision/Recall chart](#Precision-Recall), we can see that this image class has a high precision/recall and hence a high F score.
 This is confirmed by the model's certainty in classifying this image by looking at the top 5 softmax probabilities:
 ![Softmax](./Project_Report_Resources/output_40_0.png)
 
