@@ -144,7 +144,7 @@ The classification results from the model are:
 Let's analyze the performance for each image.
 
 _Speed Limit 30 km/h_:  
-This image is correctly classified by the model. From the [Precision/Recall chart](#Precision-Recall), we can see that this image class has a high precision/recall and hence a high F score.
+This image is correctly classified by the model. From the [Precision/Recall chart](#precision--recall), we can see that this image class has a high precision/recall and hence a high F score.
 This is confirmed by the model's certainty in classifying this image by looking at the top 5 softmax probabilities:
 ![Softmax](./Project_Report_Resources/output_40_0.png)
 
